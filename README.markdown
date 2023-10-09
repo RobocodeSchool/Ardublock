@@ -9,8 +9,7 @@ The project is managed by Maven. After checking out the source for the first tim
 
 Usage
 ----
-
-	$ mvn exec:java -Dexec.mainClass="com.ardublock.Main"
+	$ mvn exec:java 
 
 Development
 ----
@@ -18,7 +17,7 @@ Change the /src/main/resources/com/ardublock/block/ardublock_def.xml to add new 
 
 	$ mvn clean package
 
-	$ mvn compile exec:java -Dexec.mainClass="com.ardublock.Main"
+	$ mvn compile exec:java
 
 The Visual Block environment should show up. Happy Hacking! ;) 
 
