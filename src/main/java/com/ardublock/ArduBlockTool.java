@@ -1,5 +1,12 @@
 package com.ardublock;
 
+import com.ardublock.core.Context;
+import com.ardublock.ui.ArduBlockToolFrame;
+import com.ardublock.ui.listener.OpenblocksFrameListener;
+import processing.app.Editor;
+import processing.app.tools.Tool;
+
+import javax.swing.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.BufferedReader;
@@ -10,19 +17,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
-
-import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
-import javax.swing.JFrame;
-
-import processing.app.Editor;
-import processing.app.EditorTab;
-import processing.app.SketchFile;
-import processing.app.tools.Tool;
-
-import com.ardublock.core.Context;
-import com.ardublock.ui.ArduBlockToolFrame;
-import com.ardublock.ui.listener.OpenblocksFrameListener;
 
 public class ArduBlockTool implements Tool, OpenblocksFrameListener
 {
@@ -93,22 +88,16 @@ public class ArduBlockTool implements Tool, OpenblocksFrameListener
 		java.lang.reflect.Method method;
 		try {
 			// pre Arduino 1.6.12
-			Class ed = ArduBlockTool.editor.getClass();
+			Class<? extends Editor> ed = ArduBlockTool.editor.getClass();
 			Class[] cArg = new Class[1];
 			cArg[0] = String.class;
 			method = ed.getMethod("setText", cArg);
 			method.invoke(ArduBlockTool.editor, source);
 		}
-		catch (NoSuchMethodException e) {
-			ArduBlockTool.editor.getCurrentTab().setText(source);
-		} catch (IllegalAccessException e) {
-			ArduBlockTool.editor.getCurrentTab().setText(source);
-		} catch (SecurityException e) {
-			ArduBlockTool.editor.getCurrentTab().setText(source);
-		} catch (InvocationTargetException e) {
+		catch (NoSuchMethodException | IllegalAccessException | SecurityException | InvocationTargetException e) {
 			ArduBlockTool.editor.getCurrentTab().setText(source);
 		}
-		ArduBlockTool.editor.handleExport(false);
+        ArduBlockTool.editor.handleExport(false);
 	}
 	
 	private String getArduinoVersion()

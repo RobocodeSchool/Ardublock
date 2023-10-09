@@ -32,12 +32,8 @@ import com.ardublock.ui.listener.OpenButtonListener;
 import com.ardublock.ui.listener.OpenblocksFrameListener;
 import com.ardublock.ui.listener.SaveAsButtonListener;
 import com.ardublock.ui.listener.SaveButtonListener;
-
 import edu.mit.blocks.controller.WorkspaceController;
-import edu.mit.blocks.workspace.Page;
-import edu.mit.blocks.workspace.TrashCan;
 import edu.mit.blocks.workspace.Workspace;
-import edu.mit.blocks.workspace.ZoomSlider;
 
 
 public class OpenblocksFrame extends JFrame

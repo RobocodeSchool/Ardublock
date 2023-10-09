@@ -32,10 +32,15 @@
 					<execution>
 						<goals>
 							<goal>java</goal>
+							<goal>exec</goal>
 						</goals>
 					</execution>
 				</executions>
 				<configuration>
+					<executable>java</executable>
+					<includeProjectDependencies>true</includeProjectDependencies>
+					<includePluginDependencies>true</includePluginDependencies>
+					<classpathScope>compile</classpathScope>
 					<mainClass>com.ardublock.Main</mainClass>
 				</configuration>
 			</plugin>
@@ -63,68 +68,20 @@
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-install-plugin</artifactId>
-				<version>3.1.1</version>
-				<executions>
-					<execution>
-						<id>install-arduino-pde</id>
-						<phase>validate</phase>
-						<configuration>
-							<file>${basedir}/lib/pde.jar</file>
-							<groupId>arduino</groupId>
-							<artifactId>pde</artifactId>
-							<version>1.1</version>
-							<packaging>jar</packaging>
-							<generatePom>true</generatePom>
-						</configuration>
-						<goals>
-							<goal>install-file</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>install-arduino-core</id>
-						<phase>validate</phase>
-						<configuration>
-							<file>${basedir}/lib/arduino-core.jar</file>
-							<groupId>arduino</groupId>
-							<artifactId>arduino-core</artifactId>
-							<version>1.8.5</version>
-							<packaging>jar</packaging>
-							<generatePom>true</generatePom>
-						</configuration>
-						<goals>
-							<goal>install-file</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+
 		</plugins>
 	</build>
-	<repositories>
-		<repository>
-			<id>central</id>
-			<url>http://repo1.maven.org/maven2</url>
-		</repository>
-		<repository>
-			<id>maven_central</id>
-			<name>Maven Central</name>
-			<url>https://repo.maven.apache.org/maven2/</url>
-		</repository>
-	</repositories>
 	<dependencies>
-		<dependency>
-			<groupId>arduino</groupId>
-			<artifactId>pde</artifactId>
-			<scope>provided</scope>
-			<version>1.1</version>
-		</dependency>
 		<dependency>
 			<groupId>arduino</groupId>
 			<artifactId>arduino-core</artifactId>
 			<scope>provided</scope>
 			<version>1.8.5</version>
+		</dependency>
+		<dependency>
+			<groupId>arduino</groupId>
+			<artifactId>pde</artifactId>
+			<version>1.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.poi</groupId>
@@ -160,6 +117,8 @@
 			<groupId>edu.mit</groupId>
 			<artifactId>openblocks</artifactId>
 			<version>1.0.2-SNAPSHOT</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/resources/libs/openblocks-1.0.2-SNAPSHOT.jar</systemPath>
 		</dependency>
 	</dependencies>
 </project>
