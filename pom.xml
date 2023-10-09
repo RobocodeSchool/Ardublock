@@ -73,17 +73,6 @@
 	</build>
 	<dependencies>
 		<dependency>
-			<groupId>arduino</groupId>
-			<artifactId>arduino-core</artifactId>
-			<scope>provided</scope>
-			<version>1.8.5</version>
-		</dependency>
-		<dependency>
-			<groupId>arduino</groupId>
-			<artifactId>pde</artifactId>
-			<version>1.1</version>
-		</dependency>
-		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi</artifactId>
 			<scope>test</scope>
@@ -119,6 +108,20 @@
 			<version>1.0.2-SNAPSHOT</version>
 			<scope>system</scope>
 			<systemPath>${project.basedir}/src/main/resources/libs/openblocks-1.0.2-SNAPSHOT.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>arduino</groupId>
+			<artifactId>arduino-core</artifactId>
+			<scope>system</scope>
+			<version>1.8.5</version>
+			<systemPath>${project.basedir}/src/main/resources/libs/arduino-core.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>arduino</groupId>
+			<artifactId>pde</artifactId>
+			<scope>system</scope>
+			<version>1.1</version>
+			<systemPath>${project.basedir}/src/main/resources/libs/pde.jar</systemPath>
 		</dependency>
 	</dependencies>
 </project>
